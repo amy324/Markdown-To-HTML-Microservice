@@ -48,6 +48,9 @@ func MarkdownToHTML(markdown string) string {
 	// Images
 	markdown = regexp.MustCompile(`!\[([^\]]+)\]\(([^)]+)\)`).ReplaceAllString(markdown, "<img src=\"$2\" alt=\"$1\">")
 
+	// Add a space after list closes
+	markdown = regexp.MustCompile(`(<\/ul>|<\/ol>)`).ReplaceAllString(markdown, "$1\n")
+
 	return markdown
 }
 
@@ -82,3 +85,4 @@ This is a **simple** example of _Markdown_ to HTML conversion.
 	html := MarkdownToHTML(markdown)
 	fmt.Println(html)
 }
+
