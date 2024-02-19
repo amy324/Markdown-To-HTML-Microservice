@@ -100,9 +100,9 @@ clone https://github.com/amy324/Markdown-To-HTML-Microservice
 
 ## Code Explanation
 
-### `markdown.go`
+### `main.go`
 
-The `markdown.go` file contains the logic for converting Markdown to HTML. It defines the `MarkdownToHTML` function, which takes Markdown content as input and uses regular expressions to identify and replace Markdown syntax with corresponding HTML tags. This includes handling headings, bold and italic text, unordered and ordered lists, links, and images.
+The `main.go` file contains the logic for converting Markdown to HTML. It defines the `MarkdownToHTML` function, which takes Markdown content as input and uses regular expressions to identify and replace Markdown syntax with corresponding HTML tags. This includes handling headings, bold and italic text, unordered and ordered lists, links, and images.
 
 
 ### Regular Expressions
