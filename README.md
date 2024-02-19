@@ -90,10 +90,10 @@ This is a <strong>simple</strong> example of <em>Markdown</em> to HTML conversio
 
 1. Install Go if you haven't already: [Go Installation Guide](https://golang.org/doc/install)
 
-2. Add the package to your project using Go modules:
+2. Clone this project:
 
 ```bash
-go get github.com/amy324/markdown-to-html-microservice
+clone https://github.com/amy324/Markdown-To-HTML-Microservice
 ```
 
 3. Import the package in your Go code and use the `MarkdownToHTML` function as shown in the example above.
