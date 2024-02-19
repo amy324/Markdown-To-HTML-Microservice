@@ -96,7 +96,7 @@ This is a <strong>simple</strong> example of <em>Markdown</em> to HTML conversio
 clone https://github.com/amy324/Markdown-To-HTML-Microservice
 ```
 
-3. Import the package in your Go code and use the `MarkdownToHTML` function as shown in the example above.
+3. Add your own markdown to be converted into the `main` function and use the `MarkdownToHTML` function as shown in the example above.
 
 ## Code Explanation
 
