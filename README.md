@@ -1,26 +1,37 @@
+# Markdown to HTML Converter
 
-# Markdown to HTML Microservice
+A lightweight **Markdown-to-HTML converter written in Go**.
 
-This is a microservice written in Golang that converts Markdown syntax to HTML. It provides a function `MarkdownToHTML` that takes Markdown content as input and returns the corresponding HTML content.
+The project provides a `MarkdownToHTML` function that takes Markdown content and converts common Markdown syntax into HTML using regular expressions and the Go standard library.
+
+## Features
+
+* Convert headings from `#` to `######`
+* Convert **bold** and *italic* text
+* Convert unordered lists using `*` or `-`
+* Convert ordered lists
+* Convert Markdown links
+* Convert Markdown images
+* No external dependencies
+
+## Installation
+
+Make sure Go is installed, then clone the repository:
+
+```bash
+git clone https://github.com/amy324/Markdown-To-HTML-Microservice.git
+cd Markdown-To-HTML-Microservice
+```
 
 ## Usage
 
-To use this microservice, you can call the `MarkdownToHTML` function with the Markdown content as an argument. It will then convert the Markdown to HTML and return the HTML content.
-
-Example usage:
+Pass Markdown content to the `MarkdownToHTML` function:
 
 ```go
-func main() {
-	markdown := `
+markdown := `
 # Markdown to HTML Converter
 
 This is a **simple** example of _Markdown_ to HTML conversion.
-
-## Headings
-
-### This is a subheading
-
-#### This is a sub-subheading
 
 ## Lists
 
@@ -36,110 +47,79 @@ This is a **simple** example of _Markdown_ to HTML conversion.
 
 ## Images
 
-[Markdown Logo](https://markdown-here.com/img/icon256.png)
+![Markdown Logo](https://markdown-here.com/img/icon256.png)
 `
-	html := MarkdownToHTML(markdown)
-	fmt.Println(html)
-}
+
+html := MarkdownToHTML(markdown)
+fmt.Println(html)
 ```
 
-Output:
+Example output:
 
 ```html
-
 <h1>Markdown to HTML Converter</h1>
-
 
 This is a <strong>simple</strong> example of <em>Markdown</em> to HTML conversion.
 
-<h2>Headings</h2>
-
-
-<h3>This is a subheading</h3>
-
-
-<h4>This is a sub-subheading</h4>
-
-
 <h2>Lists</h2>
 
-
 <ul>
-<li> Item 1</li>
-<li> Item 2</li>
+<li>Item 1</li>
+<li>Item 2</li>
 </ul>
 
 <ol>
-<li> Numbered item 1</li>
-<li> Numbered item 2</li>
+<li>Numbered item 1</li>
+<li>Numbered item 2</li>
 </ol>
 
 <h2>Links</h2>
-
 
 <a href="https://www.google.com">Visit Google</a>
 
 <h2>Images</h2>
 
-
-<a href="https://markdown-here.com/img/icon256.png">Markdown Logo</a>
-
+<img src="https://markdown-here.com/img/icon256.png" alt="Markdown Logo">
 ```
 
-## Installation
+## How It Works
 
-1. Install Go if you haven't already: [Go Installation Guide](https://golang.org/doc/install)
+The conversion is handled by the `MarkdownToHTML` function in `main.go`.
 
-2. Clone this project:
+Regular expressions are used to identify different Markdown patterns and replace them with the corresponding HTML.
 
-```bash
-clone https://github.com/amy324/Markdown-To-HTML-Microservice
+For example:
+
+* `# Heading` → `<h1>Heading</h1>`
+* `**bold**` → `<strong>bold</strong>`
+* `_italic_` → `<em>italic</em>`
+* `* Item` → `<ul><li>Item</li></ul>`
+* `1. Item` → `<ol><li>Item</li></ol>`
+* `[text](url)` → `<a href="url">text</a>`
+* `![text](url)` → `<img src="url" alt="text">`
+
+The project uses Go's `regexp` and `strings` packages for the parsing and transformation.
+
+## Project Structure
+
+```text
+main.go
 ```
 
-3. Add your own markdown to be converted into the `main` function and use the `MarkdownToHTML` function as shown in the example above.
-
-## Code Explanation
-
-### `main.go`
-
-The `main.go` file contains the logic for converting Markdown to HTML. It defines the `MarkdownToHTML` function, which takes Markdown content as input and uses regular expressions to identify and replace Markdown syntax with corresponding HTML tags. This includes handling headings, bold and italic text, unordered and ordered lists, links, and images.
-
-
-### Regular Expressions
-
-Regular expressions (regex) are patterns used to match character combinations in strings. They are widely used for text search and manipulation tasks. In this microservice, regex is utilised extensively to identify and transform Markdown elements into HTML tags.
-
-### Logic Implementation
-
-#### Headings
-
-Regex is used to identify lines starting with `#` and replace them with corresponding HTML heading tags (`<h1>` to `<h6>`).
-
-#### Bold and Italics
-
-Similarly, regex is used to identify patterns for bold (`**text**`) and italic (`_text_`) text and replace them with `<strong>` and `<em>` HTML tags, respectively.
-
-#### Lists
-
-For unordered and ordered lists, regex is used to match lines starting with `*` or a number followed by `.`. These lines are then wrapped in `<ul>` and `<ol>` tags, respectively.
-
-#### Links and Images
-
-Regex patterns are used to identify Markdown link and image syntax (`[text](url)` and `![text](url)`) and replace them with corresponding HTML `<a>` and `<img>` tags.
-
-### Conclusion
-
-Regular expressions provide a powerful way to parse and manipulate text efficiently. By leveraging regex patterns, we can easily convert Markdown syntax into HTML markup, making this microservice an efficient tool for text conversion tasks.
-
+The `MarkdownToHTML` function contains the conversion logic, while `main()` provides an example of how to use it.
 
 ## Dependencies
 
-This microservice does not have any external dependencies beyond the Golang standard library.
+This project uses only the **Go standard library** and does not require any external dependencies.
+
+## Purpose
+
+This project is a useful exercise in working with regular expressions, string processing, and translating a set of syntax rules into a reusable Go function.
 
 ## Contributing
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue or submit a pull request on GitHub.
+Contributions, suggestions, and bug reports are welcome. Feel free to open an issue or submit a pull request.
 
 ## License
 
-This project is licensed under the MIT License 
+This project is licensed under the MIT License.
