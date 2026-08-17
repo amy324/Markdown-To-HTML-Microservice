@@ -114,7 +114,7 @@ This project uses only the **Go standard library** and does not require any exte
 
 ## Purpose
 
-This project is a useful exercise in working with regular expressions, string processing, and translating a set of syntax rules into a reusable Go function.
+As well as being useful for quickly generating HTML code from markdown format, this project is a demonstration in working with regular expressions, string processing, and translating a set of syntax rules into a reusable Go function.
 
 ## Contributing
 
